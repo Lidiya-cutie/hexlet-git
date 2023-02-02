@@ -1,0 +1,81 @@
+# Код воспроизводится в терминале, например VS Code
+# Если, например находимся в Git repository
+
+```...usr/src/app```
+
+# Переходим в созданную директорию code-user
+
+$ cd code-user/
+
+# Получаем:
+
+/usr/src/app/code-user$
+
+# С помощью команды git status можно посмотреть статус репозитория:
+
+$ git status
+
+# Для просмотра всех коммитов с полным diff используем log -p
+
+//code-user$ git log -p
+
+# Получаем:
+'''commit a83d69c31e5d9a9b0e0ccc7db7b02a435eb6c2de (HEAD -> main)
+Author: Student <support@hexlet.io>
+Date:   Tue Oct 13 22:05:47 2020 +0000
+
+    update hexlet2.txt
+
+diff --git a/hexlet2.txt b/hexlet2.txt
+index 43e2f65..264a802 100644
+--- a/hexlet2.txt'''
+
+# Для просмотра идентификатора используем show и первые 7 его знаков:
+
+$ git show a83d69c
+
+commit a83d69c31e5d9a9b0e0ccc7db7b02a435eb6c2de (HEAD -> main)
+Author: Student <support@hexlet.io>
+Date:   Tue Oct 13 22:05:47 2020 +0000
+
+    update hexlet2.txt
+
+diff --git a/hexlet2.txt b/hexlet2.txt
+index 43e2f65..264a802 100644
+--- a/hexlet2.txt
+
+# Для просмотра изменений конкретного идентифокатора (index) используем: 
+
+$ git show 43e2f
+Hello Hexlet!
+
+$ git show 264a8
+Hexlet Hello!
+
+# Вносим необходимые изменения:
+
+$ echo 'Hello Hexlet!' > hexlet2.txt
+
+# С помощью команды git status можно посмотреть статус репозитория:
+
+$ git status
+
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   hexlet2.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+# Для каждого нового или измененного файла выполняем команду подготовки 
+
+$ git add hexlet2.txt
+
+# Выполняется commit:
+
+$ git commit -m 'add hexlet2.txt'
+[main e682aed] add hexlet2.txt
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+# Флаг -m означает message, то есть описание коммита. 
